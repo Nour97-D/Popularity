@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة معركة الشعبية</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            flex: 1;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            flex: 1;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            outline: none;
+        }
+
+        input[type="number"]:focus {
+            border-color: #2980b9;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        #result, #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #message.green {
+            color: #27ae60;
+        }
+
+        #message.red {
+            color: #e74c3c;
+        }
+
+        #message.gray {
+            color: #95a5a6;
+        }
+
+        footer {
+            font-size: 14px;
+            color: #95a5a6;
+            background-color: #f0f4f8;
+            padding: 10px;
+        }
+
+        footer a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>حاسبة معركة الشعبية الفردية</h1>
+        
+        <div class="form-group">
+            <label for="inputValue1">شعبيتك</label>
+            <input type="number" id="inputValue1" name="inputValue1">
+        </div>
+
+        <div class="form-group">
+            <label for="inputValue2">شعبية الخصم</label>
+            <input type="number" id="inputValue2">
+        </div>
+        
+        <button type="button" onclick="calculateValue()">احسب</button>
+        
+        <h2 id="result">:النتيجة</h2>
+        <h2 id="message"></h2>
+    </div>
+
+    <footer>
+        <p>أتمنى أن ينال الموقع إعجابكم مع تحياتي</p>
+        <a href="https://t.me/Ichn0ur" target="_blank">@ichn0ur</a>
+    </footer>
+
+    <script>
+        function calculateValue() {
+            var value1 = parseFloat(document.getElementById("inputValue1").value);
+            var value2 = parseFloat(document.getElementById("inputValue2").value);
+            var result1 = 0, result2 = 0, finalResult = 0;
+
+            if (isNaN(value1) || isNaN(value2)) {
+                document.getElementById("result").innerText = "يرجى تعبئة كل الحقول بالأرقام.";
+                document.getElementById("message").innerText = "";
+                return;
+            }
+
+            if (value1 >= 0 && value1 < 2000) {
+                result1 = 6;
+            } else if (value1 >= 2000 && value1 < 4000) {
+                result1 = 10;
+            } else if (value1 >= 4000 && value1 < 9000) {
+                result1 = 14;
+            } else if (value1 >= 9000 && value1 < 16000) {
+                result1 = 16;
+            } else if (value1 >= 16000 && value1 < 50000) {
+                result1 = 20;
+            } else if (value1 >= 50000 && value1 < 120000) {
+                result1 = 24;
+            } else if (value1 >= 120000 && value1 < 260000) {
+                result1 = 28;
+            } else if (value1 >= 260000 && value1 < 560000) {
+                result1 = 32;
+            } else if (value1 >= 560000 && value1 < 950000) {
+                result1 = 36;
+            } else if (value1 >= 950000 && value1 < 1050000) {
+                result1 = 40;
+            } else if (value1 >= 1050000) {
+                result1 = 42;
+            }
+
+            if (value2 >= 0 && value2 < 2000) {
+                result2 = 6;
+            } else if (value2 >= 2000 && value2 < 4000) {
+                result2 = 10;
+            } else if (value2 >= 4000 && value2 < 9000) {
+                result2 = 14;
+            } else if (value2 >= 9000 && value2 < 16000) {
+                result2 = 16;
+            } else if (value2 >= 16000 && value2 < 50000) {
+                result2 = 20;
+            } else if (value2 >= 50000 && value2 < 120000) {
+                result2 = 24;
+            } else if (value2 >= 120000 && value2 < 260000) {
+                result2 = 28;
+            } else if (value2 >= 260000 && value2 < 560000) {
+                result2 = 32;
+            } else if (value2 >= 560000 && value2 < 950000) {
+                result2 = 36;
+            } else if (value2 >= 950000 && value2 < 1050000) {
+                result2 = 40;
+            } else if (value2 >= 1050000) {
+                result2 = 42;
+            }
+
+            if (value1 > value2) {
+                finalResult = result1 + (result2 / 2);
+                document.getElementById("message").innerText = "مبروك الفوز";
+                document.getElementById("message").className = "green";
+            } else if (value2 > value1) {
+                finalResult = result1 / 2;
+                document.getElementById("message").innerText = "للأسف خسرت";
+                document.getElementById("message").className = "red";
+            } else {
+                finalResult = result1;
+                document.getElementById("message").innerText = "تعادل";
+                document.getElementById("message").className = "gray";
+            }
+
+            if (finalResult > 63) {
+                finalResult = 63;
+            }
+
+            document.getElementById("result").innerText = "الناتج النهائي: " + finalResult;
+        }
+    </script>
+</body>
+</html>
